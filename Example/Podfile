@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'YYLib_Example' do
+  pod 'YYLib', :path => '../'
+
+  target 'YYLib_Tests' do
+    inherit! :search_paths
+
+    pod 'Kiwi'
+  end
+end
