@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "YYLib"
-  spec.version      = "0.0.1"
+  spec.version      = "0.0.2"
   spec.summary      = "A short description of YYLib."
 
   # This description is used to generate tags and improve search results.
@@ -96,9 +96,9 @@ Pod::Spec.new do |spec|
     puts 'Notice:Loading Binary Lib Now'
     puts '-------------------------------------------------------------------'
     #spec.prepare_command = '/bin/bash ../../createLib.sh'
-    spec.source_files  = "YYLib/PodLib/*.{h,m}"
-    spec.public_header_files = "YYLib/PodLib/*.h"
-    spec.vendored_libraries = "YYLib/PodLib/*.{a}"
+    #spec.source_files  = "YYLib/PodLibs/*.{h,m}"
+    #spec.public_header_files = "YYLib/PodLibs/*.h"
+    spec.vendored_frameworks = "build/*.framework"
   else
     puts '-------------------------------------------------------------------'
     puts 'Notice:Loading Source Code Now'
