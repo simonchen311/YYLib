@@ -1,0 +1,23 @@
+PODS:
+  - Kiwi (3.0.0)
+  - YYLib (0.0.1)
+
+DEPENDENCIES:
+  - Kiwi
+  - YYLib (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Kiwi
+
+EXTERNAL SOURCES:
+  YYLib:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Kiwi: fbeafef0f00e4d8f7dcb3420a4930afe70af77f7
+  YYLib: 04b2a93b4004f041382e122e849cb41b120bd0fe
+
+PODFILE CHECKSUM: a997a1c74f1512913e3c90149d34f8e6a283ec9d
+
+COCOAPODS: 1.10.0

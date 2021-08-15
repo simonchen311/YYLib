@@ -1,0 +1,32 @@
+{
+  "name": "YYLib",
+  "version": "0.0.1",
+  "summary": "A short description of YYLib.",
+  "description": "测试pod仓库，A short description of YYLib。",
+  "homepage": "https://github.com/simonchen311",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "陈晟豪": "sunghao_chan@qq.com"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source": {
+    "git": "https://github.com/simonchen311/YYLib.git",
+    "tag": "0.0.1"
+  },
+  "source_files": "YYLib/Classes/*.{h,m}",
+  "resource_bundles": {
+    "YYLib": [
+      "YYLib/Assets/*"
+    ]
+  },
+  "frameworks": [
+    "Foundation",
+    "CoreFoundation"
+  ],
+  "requires_arc": true
+}
