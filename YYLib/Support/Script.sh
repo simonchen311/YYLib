@@ -8,7 +8,7 @@
 
 #把这段脚本增加到Jenkin构建步骤中，所以不是
 
-PB_FILE_PATH="./proto-buf-files/"
+PB_FILE_PATH="./PBFiles/"
 PB_OBJC_PATH_NAME="Classes"
 PB_OBJC_OUTPUT_PATH="../../$PB_OBJC_PATH_NAME"
 PB_BRANCH_NAME=$1
