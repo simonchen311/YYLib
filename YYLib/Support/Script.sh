@@ -156,12 +156,10 @@ git add .
 git status
 git commit -am"文件更新，对应版本$PB_GIT_COMMIT_ID"
 pod lib lint --allow-warnings --use-libraries
-git push
 
 git tag -a $NEW_TAG -m"升级$NEW_TAG, 对应COMMIT ID为$PB_OBJC_PATH_NAME"
-git push --tags
+git push git@github.com:simonchen311/YYLib.git --tags --all
 
 pod repo push LibsRepo $POD_FILE_NAME --allow-warnings --use-libraries
-
 
 
