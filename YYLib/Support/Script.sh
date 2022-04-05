@@ -161,7 +161,7 @@ git push
 git tag -a $NEW_TAG -m"升级$NEW_TAG, 对应COMMIT ID为$PB_OBJC_PATH_NAME"
 git push --tags
 
-pod repo push YYLib $POD_FILE_NAME --allow-warnings --use-libraries
+pod repo push LibsRepo $POD_FILE_NAME --allow-warnings --use-libraries
 
 
 
