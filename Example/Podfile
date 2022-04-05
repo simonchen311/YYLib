@@ -1,9 +1,11 @@
 use_frameworks!
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/simonchen311/LibsRepo.git'
 
 platform :ios, '9.0'
 
 target 'YYLib_Example' do
-  pod 'YYLib', :path => '../'
+  pod 'YYLib'
 
   target 'YYLib_Tests' do
     inherit! :search_paths
