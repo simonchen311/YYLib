@@ -10,9 +10,8 @@
 #endif
 #endif
 
-#import "NSObject+YYModel.h"
-#import "YYClassInfo.h"
-#import "YYModel.h"
+#import "ImperialConcubine.pbobjc.h"
+#import "ImperialFamily.pbobjc.h"
 
 FOUNDATION_EXPORT double YYLibVersionNumber;
 FOUNDATION_EXPORT const unsigned char YYLibVersionString[];

@@ -7,6 +7,7 @@
 //
 
 #import "YYViewController.h"
+#import "ImperialConcubine.pbobjc.h"
 
 @interface YYViewController ()
 
@@ -24,6 +25,13 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    imperial_concubine *c = [[imperial_concubine alloc] init];
+    NSLog(@"has Age: %@", @(c.hasAge));
 }
 
 @end

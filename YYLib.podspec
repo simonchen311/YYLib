@@ -103,7 +103,7 @@ Pod::Spec.new do |spec|
     puts '-------------------------------------------------------------------'
     puts 'Notice:Loading Source Code Now'
     puts '-------------------------------------------------------------------'
-    spec.source_files  = "YYLib/Classes/*.{h,m}"
+    spec.source_files  = "YYLib/**/*.{h,m}"
   end
 
 
@@ -117,9 +117,9 @@ Pod::Spec.new do |spec|
 
   # spec.resource  = "icon.png"
   # spec.resources = "Resources/*.png"
-  spec.resource_bundles = {
-     'YYLib' => ['YYLib/Assets/*']
-  }
+#  spec.resource_bundles = {
+#     'YYLib' => ['YYLib/Assets/*']
+#  }
   # spec.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
 
@@ -139,9 +139,8 @@ Pod::Spec.new do |spec|
   #  where they will only apply to your library. If you depend on other Podspecs
   #  you can include multiple dependencies to ensure it works.
 
-  spec.requires_arc = true
-
-  # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  # spec.dependency "JSONKit", "~> 1.4"
-
+  spec.requires_arc = false
+  spec.xcconfig = { "HEADER_SEARCH_PATHS" => "${SRCROOT}/Protobuf/objectivec", "CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES" => "YES"  }
+  spec.user_target_xcconfig = { "CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES" => "YES" }
+  spec.dependency "Protobuf", "~> 3.3.0"
 end

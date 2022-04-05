@@ -1,6 +1,8 @@
 PODS:
   - Kiwi (3.0.0)
-  - YYLib (0.0.1)
+  - Protobuf (3.3.0)
+  - YYLib (0.0.2):
+    - Protobuf (~> 3.3.0)
 
 DEPENDENCIES:
   - Kiwi
@@ -9,6 +11,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Kiwi
+    - Protobuf
 
 EXTERNAL SOURCES:
   YYLib:
@@ -16,7 +19,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Kiwi: fbeafef0f00e4d8f7dcb3420a4930afe70af77f7
-  YYLib: 04b2a93b4004f041382e122e849cb41b120bd0fe
+  Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
+  YYLib: 1a95df35323d9cb89171ff92430fb4107450b659
 
 PODFILE CHECKSUM: a997a1c74f1512913e3c90149d34f8e6a283ec9d
 

@@ -1,6 +1,6 @@
 {
   "name": "YYLib",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "summary": "A short description of YYLib.",
   "description": "测试pod仓库，A short description of YYLib。",
   "homepage": "https://github.com/simonchen311",
@@ -16,17 +16,24 @@
   },
   "source": {
     "git": "https://github.com/simonchen311/YYLib.git",
-    "tag": "0.0.1"
+    "tag": "0.0.2"
   },
-  "source_files": "YYLib/Classes/*.{h,m}",
-  "resource_bundles": {
-    "YYLib": [
-      "YYLib/Assets/*"
-    ]
-  },
+  "source_files": "YYLib/**/*.{h,m}",
   "frameworks": [
     "Foundation",
     "CoreFoundation"
   ],
-  "requires_arc": true
+  "requires_arc": false,
+  "xcconfig": {
+    "HEADER_SEARCH_PATHS": "${SRCROOT}/Protobuf/objectivec",
+    "CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES": "YES"
+  },
+  "user_target_xcconfig": {
+    "CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES": "YES"
+  },
+  "dependencies": {
+    "Protobuf": [
+      "~> 3.3.0"
+    ]
+  }
 }
