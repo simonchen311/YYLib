@@ -17,7 +17,7 @@ PB_BRANCH_NAME=$1
 if [ ! -d $PB_FILE_PATH ]
 then
     echo "-- PB源文件夹不存在，开始从git同步 --"
-    git clone git@gitee.com:simonchan01/proto-buf-files.git
+    git clone git@github.com:simonchen311/PBFiles.git
 fi
 
 # 判断是否clone成功
@@ -149,18 +149,18 @@ do
 done < $POD_FILE_NAME
 
 # 替换podspec文本
-sed -i "" "s/$OLD_VERSION_LINE/$NEW_VERSION_LINE/g" $POD_FILE_NAME
+#sed -i "" "s/$OLD_VERSION_LINE/$NEW_VERSION_LINE/g" $POD_FILE_NAME
 
 # 更新pod，自动上传，这里一定是有文件变动，所以可以直接提交
-git add .
-git status
-git commit -am"文件更新，对应版本$PB_GIT_COMMIT_ID"
-pod lib lint --allow-warnings --use-libraries
-
-git tag -a $NEW_TAG -m"升级$NEW_TAG, 对应COMMIT ID为$PB_OBJC_PATH_NAME"
-git push --tags
-
-pod repo push YYLib $POD_FILE_NAME --allow-warnings --use-libraries
+#git add .
+#git status
+#git commit -am"文件更新，对应版本$PB_GIT_COMMIT_ID"
+#pod lib lint --allow-warnings --use-libraries
+#
+#git tag -a $NEW_TAG -m"升级$NEW_TAG, 对应COMMIT ID为$PB_OBJC_PATH_NAME"
+#git push --tags
+#
+#pod repo push YYLib $POD_FILE_NAME --allow-warnings --use-libraries
 
 
 
