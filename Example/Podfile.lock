@@ -1,20 +1,24 @@
 PODS:
   - Kiwi (3.0.0)
-  - YYLib (0.0.2)
+  - Protobuf (3.3.0)
+  - YYLib (0.0.8):
+    - Protobuf (~> 3.3.0)
 
 DEPENDENCIES:
   - Kiwi
   - YYLib
 
 SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Kiwi
+    - Protobuf
   https://github.com/simonchen311/LibsRepo.git:
     - YYLib
-  trunk:
-    - Kiwi
 
 SPEC CHECKSUMS:
   Kiwi: fbeafef0f00e4d8f7dcb3420a4930afe70af77f7
-  YYLib: 7c06bcbbc5975f45ba8243e9c3e0cd7ea7eca57c
+  Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
+  YYLib: ea19b444e524f64bf6cb00bc8f9364576f37bff6
 
 PODFILE CHECKSUM: d83ebbb111ad733c88ee351724ed62e196a73670
 

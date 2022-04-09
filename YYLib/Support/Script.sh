@@ -8,10 +8,11 @@
 
 #把这段脚本增加到Jenkin构建步骤中，所以不是
 
+PB_MD5_FILE_NAME="pb-md5.txt"
 PB_FILE_PATH="./PBFiles/"
 PB_OBJC_PATH_NAME="Classes"
-PB_OBJC_OUTPUT_PATH="../../$PB_OBJC_PATH_NAME"
 PB_BRANCH_NAME=$1
+
 
 # 拉取pb最新的源文件
 if [ ! -d $PB_FILE_PATH ]
@@ -58,38 +59,45 @@ else
     exit 0
 fi
 
-# 获取最新的短Commit id
+#获取最新的commit id
 PB_GIT_COMMIT_ID=`git rev-parse --short HEAD`
 
-# 找到输出目录的id
-for dir in `ls ../../`
+# 计算md5，按文件名升序排列，输入文件名和md5到文件中
+rm -rf $PB_MD5_FILE_NAME
+touch $PB_MD5_FILE_NAME
+PB_FILES=$(ls *.proto | sort -k9)
+for file in $PB_FILES
 do
-    # 如果是个文件夹，且包含相同的Commit id
-    if [ -d "../../${dir}/" ] && [[ $dir =~ $PB_OBJC_PATH_NAME ]]
-    then
-        if  [[ $dir =~ $PB_GIT_COMMIT_ID ]]
-        then
-            echo "-- git文件没有变动，退出 --"
-            cd ..
-            rm -rf $PB_FILE_PATH
-            exit 0
-        else
-            echo "-- git文件有更新，删除旧目录 --"
-            rm -rf "../../${dir}/"
-        fi
-    fi
+    echo $file >> $PB_MD5_FILE_NAME
+    echo $(md5 $file) | cut -d ' ' -f 4 >> $PB_MD5_FILE_NAME # cut按空格截取最后一段
 done
 
-# 新建输出目录
-DEST_PATH="$PB_OBJC_OUTPUT_PATH-$PB_GIT_COMMIT_ID/"
-mkdir $DEST_PATH
- 
+# 找到上一级目录保存的旧md5，用diff比较文件是否不同
+if [ -f "../$PB_MD5_FILE_NAME" ]
+then
+    result=$(echo $(diff $PB_MD5_FILE_NAME ../$PB_MD5_FILE_NAME))
+    if [[ $result == "" ]]
+    then
+        echo "-- PB文件没有变化，无需更新 --"
+        cd ..
+        rm -rf $PB_FILE_PATH
+        exit 0
+    fi
+fi
+
+echo "-- 检测到更新，开始更新PB --"
+## 删除旧md5文件，拷贝新文件
+rm -rf "../$PB_MD5_FILE_NAME"
+cp $PB_MD5_FILE_NAME "../$PB_MD5_FILE_NAME"
+## 删除旧目录，新建输出目录
+rm -rf "../../$PB_OBJC_PATH_NAME"
+mkdir "../../$PB_OBJC_PATH_NAME"
 # 遍历所有proto文件，执行转换
 for proto_file in `ls ./`
 do
     if [ ${proto_file##*.} = "proto" ]
     then
-        CHECK_PROTOC=`protoc $proto_file --objc_out=${DEST_PATH}`
+        CHECK_PROTOC=`protoc $proto_file --objc_out="../../$PB_OBJC_PATH_NAME"`
         if [[ ${CHECK_PROTOC} != "" ]]
         then
             echo "-- ${proto_file}编译失败，请检查 --"
@@ -105,7 +113,7 @@ rm -rf $PB_FILE_PATH
 cd ..
 cd ..
 
-# 获取podspec
+## 获取podspec
 POD_FILE_NAME=""
 for dir in `ls ${pwd}`
 do
