@@ -14,6 +14,12 @@ PB_OBJC_PATH_NAME="Classes"
 PB_BRANCH_NAME=$1
 
 
+# 打开目录后先清空暂存区
+echo "-- 清空暂存，拉取最新的代码 --"
+git reset --hard HEAD@{0}
+git clean -xdf
+git pull
+
 # 拉取pb最新的源文件
 if [ ! -d $PB_FILE_PATH ]
 then
@@ -30,11 +36,6 @@ fi
 
 echo "-- 进入文件夹 --"
 cd $PB_FILE_PATH
-
-# 打开目录后先清空暂存区
-echo "-- 清空暂存 --"
-git reset --hard HEAD@{0}
-git clean -xdf
 
 # 判断远端是否有分支
 git branch -a | grep -E "remotes/origin/${PB_BRANCH_NAME}$"
